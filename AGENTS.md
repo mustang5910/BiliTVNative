@@ -135,4 +135,13 @@ adb shell dumpsys meminfo com.kirin.bilitv
 adb shell dumpsys gfxinfo com.kirin.bilitv
 ```
 
+```bash
+./gradlew :app:assembleDebug
+adb install -r ~/.gradle/bilitv-native-build/app/outputs/apk/debug/app-debug.apk
+adb shell dumpsys meminfo com.kirin.bilitv
+adb shell dumpsys gfxinfo com.kirin.bilitv
+```
+
+Release 构建：Windows 用 `.\build-release.bat [abi]`，Linux 用 `./build-release.sh [abi]`（自动探测 JDK 17 与 `~/Android/Sdk`）。
+
 涉及播放时，使用相同的 BVID、CID、画质、编码、请求头和弹幕时间，对比 Flutter 参考应用行为。

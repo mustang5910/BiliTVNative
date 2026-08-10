@@ -132,10 +132,18 @@ Debug 构建：
 .\gradlew.bat :app:assembleDebug
 ```
 
+```bash
+./gradlew :app:assembleDebug
+```
+
 同时构建 TV 常用的 `armeabi-v7a` 和现代平板/电视常用的 `arm64-v8a` Release：
 
 ```powershell
 .\build-release.bat
+```
+
+```bash
+./build-release.sh
 ```
 
 只构建单个 ABI：
@@ -145,11 +153,22 @@ Debug 构建：
 .\build-release.bat arm64-v8a
 ```
 
+```bash
+./build-release.sh armeabi-v7a
+./build-release.sh arm64-v8a
+```
+
 Release APK 会保存在：
 
 ```text
 %USERPROFILE%\.gradle\bilitv-native-build\release-apks\
 ```
+
+```text
+~/.gradle/bilitv-native-build/release-apks/
+```
+
+`build-release.sh` 会自动探测 JDK 17（`JAVA_HOME` → `/usr/lib/jvm/java-17-openjdk`）和 Android SDK（`ANDROID_HOME` → `~/Android/Sdk`），也可显式覆盖：`JAVA_HOME=/path/to/jdk17 ANDROID_HOME=/path/to/sdk ./build-release.sh`。
 
 对应文件名为 `BiliTVNative-armeabi-v7a-release.apk` 和 `BiliTVNative-arm64-v8a-release.apk`。Release 已启用 R8、资源裁剪、语言资源过滤和保守 Baseline Profile。
 

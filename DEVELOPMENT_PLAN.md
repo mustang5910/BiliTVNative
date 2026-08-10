@@ -723,6 +723,15 @@ adb shell dumpsys meminfo com.kirin.bilitv
 adb shell dumpsys gfxinfo com.kirin.bilitv
 ```
 
+```bash
+./gradlew :app:assembleDebug
+./build-release.sh
+# 默认分别输出 armeabi-v7a / arm64-v8a 到 ~/.gradle/bilitv-native-build/release-apks/
+adb install -r ~/.gradle/bilitv-native-build/app/outputs/apk/debug/app-debug.apk
+adb shell dumpsys meminfo com.kirin.bilitv
+adb shell dumpsys gfxinfo com.kirin.bilitv
+```
+
 回归对比：
 
 - Flutter 和原生版本使用同一个 BVID 对比。
